@@ -55,7 +55,7 @@ Sudo Java -jar Arduino_Terminal.X.X.X.Jar --port 46827 --exec gedit
 Sudo Java -jar Arduino_Terminal.X.X.X.Jar --pid 123 --port 35216
 ```
 ## Installation
-Pleas read all: Wiki
+Pleas read all: [Wiki](https://github.com/HKS-HNS/Arduino-Terminal/wiki) 
 
 ## for Java Developer:
 
