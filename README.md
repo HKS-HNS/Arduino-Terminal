@@ -5,7 +5,7 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 
 ## Features from the Server:
 
-- Set the program from where you wanna have the ram or usage 
+- Set the program from where you want to have the ram or usage 
    - per process id 
    - to start a process
 - Set the port
@@ -22,7 +22,7 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 - Set the Server
     - Port
     - Adress
--  Connects over Wifi to the Wio Terminal
+-  Connects over Wifi to the Server
 
 ## Server Usage:
 #### Commands:
