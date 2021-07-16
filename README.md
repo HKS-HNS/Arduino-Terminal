@@ -32,12 +32,13 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
         --exec / -e    <program>    open this programm         or
         --pid  / -pi   <process ID>  Dysplays ths process
 ```
-#### Examples:
 
-Format:
+#### Format:
 ```
 Java -jar <NAME.jar> -p <Port> (--exec <program> or -pid <process ID>)
 ```
+#### Examples:
+
 Windows:
 ```
 Java -jar Arduino_Terminal.X.X.X.Jar -p 8080 --exec Notepad.exe
