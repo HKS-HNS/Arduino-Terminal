@@ -29,10 +29,15 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 ```
         --help / -h                  dsiplays this message
         --port / -p    <number>      sets the port
-        --exec / -e    <Programm>    open this programm         or
-        --pid  / -pi   <processid>   Dysplays ths process
+        --exec / -e    <program>    open this programm         or
+        --pid  / -pi   <process ID>  Dysplays ths process
 ```
 #### Examples:
+
+Format:
+```
+Java -jar <NAME.jar> -p <Port> (--exec <program> or -pid <process ID>)
+```
 Windows:
 ```
 Java -jar Arduino_Terminal.X.X.X.Jar -p 8080 --exec Notepad.exe
