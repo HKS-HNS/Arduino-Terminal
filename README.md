@@ -24,37 +24,7 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
     - Adress
 -  Connects over Wifi to the Server
 
-## Server Usage:
-#### Commands:
-```
-        --help / -h                  dsiplays this message
-        --port / -p    <Port>        sets the Port
-        --exec / -e    <Program>     open this Programm        or
-        --pid  / -pi   <Process ID>  Dysplays ths Process
-```
-
-#### Format:
-```
-Java -jar <NAME.jar> -p <Port> (--exec <Program> or --pid <Process ID>)
-```
-#### Examples:
-
-Windows:
-```
-Java -jar Arduino_Terminal.X.X.X.Jar --exec Notepad.exe --port 8080
-```
-```
-Java -jar Arduino_Terminal.X.X.X.Jar --port 18807 --pid 2133
-```
-Unix / Linux :
-```
-Sudo Java -jar Arduino_Terminal.X.X.X.Jar --port 46827 --exec gedit
-```
-
-```
-Sudo Java -jar Arduino_Terminal.X.X.X.Jar --pid 123 --port 35216
-```
-## Installation
+## Installation and Usage
 Pleas read all: [Wiki](https://github.com/HKS-HNS/Arduino-Terminal/wiki) 
 
 ## for Java Developer:
