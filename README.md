@@ -35,24 +35,24 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 
 #### Format:
 ```
-Java -jar <NAME.jar> -p <Port> (--exec <Program> or -pid <Process ID>)
+Java -jar <NAME.jar> -p <Port> (--exec <Program> or --pid <Process ID>)
 ```
 #### Examples:
 
 Windows:
 ```
-Java -jar Arduino_Terminal.X.X.X.Jar -p 8080 --exec Notepad.exe
+Java -jar Arduino_Terminal.X.X.X.Jar --exec Notepad.exe --port 8080
 ```
 ```
-Java -jar Arduino_Terminal.X.X.X.Jar -p 18807 --pid 2133
+Java -jar Arduino_Terminal.X.X.X.Jar --port 18807 --pid 2133
 ```
 Unix / Linux :
 ```
-Sudo Java -jar Arduino_Terminal.X.X.X.Jar -p 46827 --exec gedit
+Sudo Java -jar Arduino_Terminal.X.X.X.Jar --port 46827 --exec gedit
 ```
 
 ```
-Sudo Java -jar Arduino_Terminal.X.X.X.Jar -p 35216 --pid 123
+Sudo Java -jar Arduino_Terminal.X.X.X.Jar --pid 123 --port 35216
 ```
 ## Installation
 Pleas read all: Wiki
