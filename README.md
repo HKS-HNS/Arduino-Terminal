@@ -15,7 +15,7 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 
 ## Features from my Wio Terminal Software:
 - Gui
-- Set the PIN
+- Set a PIN up to 12 Numbers
 - Set the Wifi to connect
     - SSID
     - Password
@@ -28,9 +28,9 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 #### Commands:
 ```
         --help / -h                  dsiplays this message
-        --port / -p    <number>      sets the port
-        --exec / -e    <program>    open this programm         or
-        --pid  / -pi   <process ID>  Dysplays ths process
+        --port / -p    <Port>        sets the Port
+        --exec / -e    <Program>     open this Programm        or
+        --pid  / -pi   <Process ID>  Dysplays ths Process
 ```
 
 #### Format:
