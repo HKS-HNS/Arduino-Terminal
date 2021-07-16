@@ -35,7 +35,7 @@ This is a Software for a server and for a Wio Terminal to become the ram and usa
 
 #### Format:
 ```
-Java -jar <NAME.jar> -p <Port> (--exec <program> or -pid <process ID>)
+Java -jar <NAME.jar> -p <Port> (--exec <Program> or -pid <Process ID>)
 ```
 #### Examples:
 
