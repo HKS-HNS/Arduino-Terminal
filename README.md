@@ -1,11 +1,11 @@
 # Arduino-Terminal
-This is a Software for a server and for a Wio Terminal to become the ram and usage from the server.
+This is a Software for a server and for a Wio Terminal to become the ram and CPU usage from the server.
 
 
 
 ## Features from the Server:
 
-- Set the program from where you want to have the ram or usage 
+- Set the program from where you want to have the ram or CPU usage 
    - per process id 
    - to start a process
 - Set the port
