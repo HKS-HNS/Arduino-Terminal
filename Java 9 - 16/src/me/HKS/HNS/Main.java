@@ -72,6 +72,7 @@ public class Main {
             System.out.println("If you wane run " + Path + " type Yes");
             String yesorno = ac.nextLine();
             if (yesorno.equalsIgnoreCase("Yes")) {
+            if (Path != "Shutdown") {
               Process p = server.exec(Path);
               try {
                 server.Start(p.pid());
@@ -79,7 +80,7 @@ public class Main {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
 
-              }
+              }}
             }
 
           }
@@ -196,7 +197,7 @@ public class Main {
         "        --help / -h                  dsiplays this message\r\n" +
         "        --port / -p    <Port>        sets the Port\r\n" +
         "        --exec / -e    <Program>     open this Programm        or\r\n" +
-        "        --pid  / -pi   <Process ID>  Dysplays ths Process");
+        "        --pid  / -pi   <Process ID>  Dysplays the Process");
 
     } else if (messag.equalsIgnoreCase("port")) {
 
