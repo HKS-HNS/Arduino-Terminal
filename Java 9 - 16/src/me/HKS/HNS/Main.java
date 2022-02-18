@@ -60,13 +60,13 @@ public class Main {
           File tempFile = new File(Path);
           File tempFileSys = new File("C:\\WINDOWS\\system32\\" + Path);
           if (tempFile.exists() || tempFileSys.exists()) { // tests if file exists
-
-            Process p = server.exec(Path);
+         if (Path != "Shutdown") {
+                Process p = server.exec(Path);
             try {
               server.Start(p.pid());
             } catch (IOException e) {
               e.printStackTrace();
-            }
+            }}
           } else {
             ;
             System.out.println("If you wane run " + Path + " type Yes");
