@@ -28,21 +28,21 @@ const uint16_t ServerPort = 342; //Enter your Server Port            //
 
 
 
-WiFiClient client; // client from Wifi
+WiFiClient client; // Client from Wifi
 int Screen = 0;  // Screen Number
 int Button = 0;  // Selected Button
 int Viewnm = 0;  // Selected Number for Login
-int on; // if Internet is connected
-int delaysr = 1001; // for delay from server to here
+int on; // If Internet is connected
+int delaysr = 1001; // For delay from server to here
 String Dysplay = ""; // String for text on dysplay
-String Usedmem = "MB:"; // save current used memory
-boolean wifi = false; // that wifi only ones get executed
+String Usedmem = "MB:"; // Save current used memory
+boolean wifi = false; // That wifi only ones get executed
 
 void setup() {
 
 
 
-  // put your setup code here, to run once:
+  // Put your setup code here, to run once:
   tft.begin(); // Start Screen
   tft.setRotation(3);
   screen(0);
@@ -161,7 +161,7 @@ void loop() {
       loadpassowrdbtn("Up");
 
     } else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      button(Button);//Selected Button click
+      button(Button); //Selected Button click
     }
   }
 
@@ -183,22 +183,22 @@ void loop() {
   if (Screen == 5) {
     if (digitalRead(WIO_KEY_C) == LOW) {
 
-      screen(3);//Back to Menu
+      screen(3); //Back to Menu
     } else if (WiFi.status() != WL_CONNECTED) {
-      screen(4);// to NoWifi wait Menu
+      screen(4); // to NoWifi wait Menu
     }  else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      screen(3);// Main Menu
+      screen(3); // Main Menu
     } else {
       getinfofromserver("Ram");
     }
   }
   if (Screen == 6) {
     if (digitalRead(WIO_KEY_C) == LOW) {
-      screen(3);//Back to Menu
+      screen(3); //Back to Menu
     } else if (WiFi.status() != WL_CONNECTED) {
       screen(4);
     }  else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      screen(3);// Main Menu
+      screen(3); // Main Menu
     } else {
       getinfofromserver("CPUusage");
     }
@@ -229,7 +229,7 @@ void setnumb() { // Add Number to Screen
 
 }
 
-void numbersel(int num, String Direct) { // to switch Dysplayed Numbers
+void numbersel(int num, String Direct) { // To switch Dysplayed Numbers
   if (Direct == "Right") {
     if (num == 9) {
       tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_LIGHTGREY);
@@ -256,7 +256,7 @@ void numbersel(int num, String Direct) { // to switch Dysplayed Numbers
   }
 }
 
-void screen(int num) { // to select the screen
+void screen(int num) { // To select the screen
   Button = 0;
   delaysr = 1001;
   if (num == 1) { // Menu Screen
@@ -287,7 +287,6 @@ void screen(int num) { // to select the screen
     Dysplay = "";
     btn0();
   } else if (num == 3) { // Server Screen
-    //TODO: 4. Button hinzufügen
     tft.setTextSize(3);
     Screen = num;
     Button = 0;
@@ -327,7 +326,7 @@ void screen(int num) { // to select the screen
   }
 }
 
-void loadpassowrdbtn(String Direction) {//Button selection
+void loadpassowrdbtn(String Direction) {// Button selection
   tft.setTextSize(3);
   Viewnm = 0;
   if (Button == 0 && Direction == "Down") {// Button 1
@@ -451,16 +450,16 @@ void getinfofromserver(String Key) {
       return;
     } else {
 
-      client.print(Key); //send String to server
-      delaysr = 0;
+      client.print(Key); // Send String to server
+      delaysr = 0; 
       int maxloops = 0;
 
-      while (!client.available() && maxloops < 500) { // wait for reply
+      while (!client.available() && maxloops < 500) { // Wait for reply
         maxloops++;
       }
-      if (client.available() > 0) { // print message from server
+      if (client.available() > 0) { // Print message from server
 
-        String cache = client.readString(); // cache for the info from the server
+        String cache = client.readString(); // Cache for the info from the server
         if (Screen == 5) {
           if (!Usedmem.equals(cache)) {
             Usedmem = cache;
@@ -481,7 +480,7 @@ void getinfofromserver(String Key) {
       } else {
       }
 
-      client.stop(); // disconnecting from server
+      client.stop(); // Disconnecting from server
 
     }
   } else {
@@ -495,26 +494,26 @@ void btn0() { // Button 1
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_LIGHTGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_LIGHTGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_LIGHTGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_LIGHTGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); // Console
   } else if (Screen == 4) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
   } else if (Screen == 5) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
     tft.fillRect(0, 125, 320, 50, TFT_GREEN);
     tft.drawString("MB: 0.0", 31, 125);
   } else if (Screen == 6) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
     tft.fillRect(0, 125, 320, 50, TFT_GREEN);
     tft.drawString("Usage: 0%", 31, 125);
   }
@@ -524,15 +523,15 @@ void btn1() {
   if (Screen == 2) {// Button 2
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_LIGHTGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_LIGHTGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_LIGHTGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_LIGHTGREY); // Console
   }
   lbtn();
 }
@@ -540,15 +539,15 @@ void btn2() { // Button 3
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_LIGHTGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_LIGHTGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); // Console
   }
   lbtn();
 }
@@ -556,17 +555,17 @@ void btn3() {// Button 4
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_LIGHTGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_LIGHTGREY); // Login
   } else if (Screen == 3) {
 
   }
   lbtn();
 }
 
-void lbtn() { //Add to Login
+void lbtn() { // Add to Login
   if (Screen == 2) {
     tft.drawString(Dysplay, 5, 17);
     tft.drawString("Login", 115, 175);
