@@ -32,15 +32,15 @@ boolean Serialon = true; // Sets Serial on or off                    //
 
 
 
-WiFiClient client; // client from Wifi
+WiFiClient client; // Client from Wifi
 int Screen = 0;  // Screen Number
 int Button = 0;  // Selected Button
 int Viewnm = 0;  // Selected Number for Login
-int on; // if Internet is connected
-int delaysr = 1001; // for delay from server to here
+int on; // If Internet is connected
+int delaysr = 1001; // For delay from server to here
 String Dysplay = ""; // String for text on dysplay
-String Usedmem = "MB:"; // save current used memory
-boolean wifi = false; // that wifi only ones get executed
+String Usedmem = "MB:"; // Save current used memory
+boolean wifi = false; // That wifi only ones get executed
 
 void setup() {
   if (Serialon == true) {
@@ -51,7 +51,7 @@ void setup() {
 
   Serial.println("welcome to My Terminal");
 
-  // put your setup code here, to run once:
+  // Put your setup code here, to run once:
   tft.begin(); // Start Screen
   tft.setRotation(3);
   screen(0);
@@ -75,7 +75,7 @@ void setup() {
 void loop() {
   if (Screen == 0) {
     if (digitalRead(WIO_5S_PRESS) == LOW || digitalRead(WIO_KEY_A) == LOW || digitalRead(WIO_KEY_B) == LOW || digitalRead(WIO_KEY_C) == LOW || digitalRead(WIO_5S_RIGHT) == LOW || digitalRead(WIO_5S_LEFT) == LOW || digitalRead(WIO_5S_DOWN) == LOW || digitalRead(WIO_5S_UP) == LOW) {
-      //if any input
+      // If any input
       screen(1);
     }
   }
@@ -118,15 +118,15 @@ void loop() {
       Button  = 1;
     } else if (Button == 1 && digitalRead(WIO_5S_LEFT) == LOW ) {
       Serial.println("Button Login was Selected on the Menu Screen");
-      tft.fillScreen(TFT_GREEN); //Button Login
+      tft.fillScreen(TFT_GREEN); // Button Login
       tft.fillRoundRect(35, 35, 80, 30, 3, TFT_LIGHTGREY);
       tft.fillRoundRect(195, 35, 100, 30, 3, TFT_GREEN);
       lbtn();
       Button  = 0;
     } else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      button(Button);//Selected Button click
+      button(Button); // Selected Button click
     } else if (digitalRead(WIO_KEY_C)  == LOW) {
-      screen(0);//Back to Home Screen
+      screen(0); // Back to Home Screen
     }
 
   }
@@ -140,47 +140,47 @@ void loop() {
       numbersel(Viewnm, "Left");
     } else if (Button  == 0 && digitalRead(WIO_5S_PRESS) == LOW) {
       setnumb();
-    } else if ( digitalRead(WIO_5S_DOWN) == LOW) { //Button REM
+    } else if ( digitalRead(WIO_5S_DOWN) == LOW) { // Button REM
       loadpassowrdbtn("Down");
 
-    } else if ( digitalRead(WIO_5S_RIGHT) == LOW) { //Button Right
+    } else if ( digitalRead(WIO_5S_RIGHT) == LOW) { // Button Right
       loadpassowrdbtn("Right");
 
-    } else if ( digitalRead(WIO_5S_LEFT) == LOW) { //Button Left
+    } else if ( digitalRead(WIO_5S_LEFT) == LOW) { // Button Left
       loadpassowrdbtn("Left");
 
-    } else if ( digitalRead(WIO_5S_UP) == LOW) { //Button Up
+    } else if ( digitalRead(WIO_5S_UP) == LOW) { // Button Up
       loadpassowrdbtn("Up");
 
     } else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      button(Button);//Selected Button click
+      button(Button); // Selected Button click
     }
   }
   if (Screen == 3) {
     if (digitalRead(WIO_KEY_C) == LOW) {
-      screen(2);//Back to Menu
+      screen(2); // Back to Menu
     } else if (WiFi.status() != WL_CONNECTED) {
       screen(4);
-    } else if ( digitalRead(WIO_5S_DOWN) == LOW) { //Button Down
+    } else if ( digitalRead(WIO_5S_DOWN) == LOW) { // Button Down
       loadpassowrdbtn("Down");
 
-    } else if ( digitalRead(WIO_5S_RIGHT) == LOW) { //Button Right
+    } else if ( digitalRead(WIO_5S_RIGHT) == LOW) { // Button Right
       loadpassowrdbtn("Right");
 
-    } else if ( digitalRead(WIO_5S_LEFT) == LOW) { //Button Left
+    } else if ( digitalRead(WIO_5S_LEFT) == LOW) { // Button Left
       loadpassowrdbtn("Left");
 
-    } else if ( digitalRead(WIO_5S_UP) == LOW) { //Button Up
+    } else if ( digitalRead(WIO_5S_UP) == LOW) { // Button Up
       loadpassowrdbtn("Up");
 
     } else if (digitalRead(WIO_5S_PRESS) == LOW) {
-      button(Button);//Selected Button click
+      button(Button); // Selected Button click
     }
   }
 
   if (Screen == 4) {
     if (digitalRead(WIO_KEY_C) == LOW) {
-      screen(1);//Back to Menu
+      screen(1); // Back to Menu
     } else if (WiFi.status() != WL_CONNECTED) {
       if (wifi == false) {
         wifi = true;
@@ -196,12 +196,12 @@ void loop() {
   if (Screen == 5) {
     if (digitalRead(WIO_KEY_C) == LOW) {
       Serial.println("Back wa Pressed on the Ram Screen");
-      screen(3);//Back to Server Menu
+      screen(3); // Back to Server Menu
     } else if (WiFi.status() != WL_CONNECTED) {
-      screen(4);// to NoWifi wait Menu
+      screen(4); // To NoWifi wait Menu
     }  else if (digitalRead(WIO_5S_PRESS) == LOW) {
        Serial.println("Back wa Pressed on the Ram Screen");
-      screen(3);// Server Menu
+      screen(3); // Server Menu
     } else {
       getinfofromserver("Ram");
     }
@@ -209,12 +209,12 @@ void loop() {
   if (Screen == 6) {
     if (digitalRead(WIO_KEY_C) == LOW) {
       Serial.println("Back wa Pressed on the CPU Screen");
-      screen(3);//Back to Server Menu
+      screen(3); // Back to Server Menu
     } else if (WiFi.status() != WL_CONNECTED) {
       screen(4);
     }  else if (digitalRead(WIO_5S_PRESS) == LOW) {
       Serial.println("Back wa Pressed on the CPU Screen");
-      screen(3);// Main Menu
+      screen(3); // Main Menu
     } else {
       getinfofromserver("CPUusage");
     }
@@ -272,7 +272,7 @@ void numbersel(int num, String Direct) { // to switch Dysplayed Numbers
   }
 }
 
-void screen(int num) { // to select the screen
+void screen(int num) { // To select the screen
   Button = 0;
   delaysr = 1001;
   if (num == 1) { // Menu Screen
@@ -349,10 +349,10 @@ void screen(int num) { // to select the screen
   }
 }
 
-void loadpassowrdbtn(String Direction) {//Button selection
+void loadpassowrdbtn(String Direction) { // Button selection
   tft.setTextSize(3);
   Viewnm = 0;
-  if (Button == 0 && Direction == "Down") {// Button 1
+  if (Button == 0 && Direction == "Down") { // Button 1
     if (Screen == 2) {
       Button = 3;
       btn3();
@@ -362,7 +362,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 0 && Direction == "Right") {// Button 1
+  } else if (Button == 0 && Direction == "Right") { // Button 1
     if (Screen == 2) {
       return;
     } else if (Screen == 3) {
@@ -371,7 +371,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 1 && Direction == "Up") {// Button 2
+  } else if (Button == 1 && Direction == "Up") { // Button 2
     if (Screen == 2) {
       Button = 0;
       btn0();
@@ -380,7 +380,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 1 && Direction == "Left") {// Button 2
+  } else if (Button == 1 && Direction == "Left") { // Button 2
     if (Screen == 2) {
       Button = 2;
       btn2();
@@ -390,7 +390,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 1 && Direction == "Down") {// Button 2
+  } else if (Button == 1 && Direction == "Down") { // Button 2
     if (Screen == 2) {
       Button = 3;
       btn3();
@@ -400,7 +400,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 2 && Direction == "Down") {// Button 3
+  } else if (Button == 2 && Direction == "Down") { // Button 3
     if (Screen == 2) {
       Button = 3;
       btn3();
@@ -409,7 +409,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 2 && Direction == "Up") {// Button 3
+  } else if (Button == 2 && Direction == "Up") { // Button 3
     if (Screen == 2) {
       Button = 0;
       btn0();
@@ -419,7 +419,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 2 && Direction == "Right") {// Button 3
+  } else if (Button == 2 && Direction == "Right") { // Button 3
     if (Screen == 2) {
       Button = 1;
       btn1();
@@ -429,7 +429,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 3 && Direction == "Right") {// Button 4
+  } else if (Button == 3 && Direction == "Right") { // Button 4
     if (Screen == 2) {
       Button = 1;
       btn1();
@@ -438,7 +438,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 3 && Direction == "Left") {// Button 4
+  } else if (Button == 3 && Direction == "Left") { // Button 4
     if (Screen == 2) {
       Button = 2;
       btn2();
@@ -447,7 +447,7 @@ void loadpassowrdbtn(String Direction) {//Button selection
     }
 
 
-  } else if (Button == 3 && Direction == "Up") {// Button 4
+  } else if (Button == 3 && Direction == "Up") { // Button 4
     if (Screen == 2) {
       Button = 0;
       btn0();
@@ -475,16 +475,16 @@ void getinfofromserver(String Key) {
     } else {
       Serial.println("Connected to server!");
 
-      client.print(Key); //send String to server
+      client.print(Key); // Send String to server
       delaysr = 0;
       int maxloops = 0;
 
-      while (!client.available() && maxloops < 500) { // wait for reply
+      while (!client.available() && maxloops < 500) { // Wait for reply
         maxloops++;
       } Serial.println(client.available());
-      if (client.available() > 0) { // print message from server
+      if (client.available() > 0) { // Print message from server
 
-        String cache = client.readString(); // cache for the info from the server
+        String cache = client.readString(); // Cache for the info from the server
         if (Screen == 5) {
           if (!Usedmem.equals(cache)) {
             Usedmem = cache;
@@ -509,7 +509,7 @@ void getinfofromserver(String Key) {
       }
 
       Serial.println("Closing connection.");
-      client.stop(); // disconnecting from server
+      client.stop(); // Disconnecting from server
 
     }
   } else {
@@ -523,30 +523,30 @@ void btn0() { // Button 1
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_LIGHTGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_LIGHTGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
     Serial.println("Switch Button is selected on the Login Screen");
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_LIGHTGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_LIGHTGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); // Console
     Serial.println("Ram is selected on the Server Screen");
   } else if (Screen == 4) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
     Serial.println("Button Back is selected on the No Wifi Screen");
   } else if (Screen == 5) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
     tft.fillRect(0, 125, 320, 50, TFT_GREEN);
     tft.drawString("MB: 0.0", 31, 125);
     Serial.println("Button Back is selected on the Ram Screen");
   } else if (Screen == 6) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
     tft.fillRect(0, 125, 320, 50, TFT_GREEN);
     tft.drawString("Usage: 0%", 31, 125);
     Serial.println("Button Back is selected on the CPU Screen");
@@ -557,16 +557,16 @@ void btn1() {
   if (Screen == 2) {// Button 2
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_LIGHTGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_LIGHTGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
     Serial.println("Button REM is selected on the Login Screen");
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_LIGHTGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_LIGHTGREY); // Console
     Serial.println("Button Console is selected on the Server Screen");
   }
   lbtn();
@@ -575,16 +575,16 @@ void btn2() { // Button 3
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_LIGHTGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_LIGHTGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_DARKGREY); // Login
     Serial.println("Button Back is selected on the Login Screen");
   } else if (Screen == 3) {
     tft.fillScreen(TFT_GREEN);
-    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); //Back
-    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); //Ram
-    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); //Console
+    tft.fillRoundRect(26, 180, 80, 30, 3, TFT_LIGHTGREY); // Back
+    tft.fillRoundRect(26, 50, 60, 30, 3, TFT_DARKGREY); // Ram
+    tft.fillRoundRect(234, 50, 60, 30, 3, TFT_DARKGREY); // Console
     Serial.println("Button Back is selected on the Server Screen");
   }
   lbtn();
@@ -593,10 +593,10 @@ void btn3() {// Button 4
   if (Screen == 2) {
     tft.fillRect(0, 50, 320, 300, TFT_GREEN);
     tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
-    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); //0
-    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); //REM
-    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); //Back
-    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_LIGHTGREY); //Login
+    tft.fillRoundRect(170 - 18, 50, 21, 30, 3, TFT_DARKGREY); // 0
+    tft.fillRoundRect(255 - 18, 80, 57, 30, 3, TFT_DARKGREY); // REM
+    tft.fillRoundRect(26, 80, 80, 30, 3, TFT_DARKGREY); // Back
+    tft.fillRoundRect(110, 170, 100, 30, 3, TFT_LIGHTGREY); // Login
     Serial.println("Button Login is selected on the Login Screen");
   } else if (Screen == 3) {
 
@@ -604,7 +604,7 @@ void btn3() {// Button 4
   lbtn();
 }
 
-void lbtn() { //Add to Login
+void lbtn() { // Add to Login
   if (Screen == 2) {
     tft.drawString(Dysplay, 5, 17);
     tft.drawString("Login", 115, 175);
