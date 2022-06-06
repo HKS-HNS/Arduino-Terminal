@@ -6,26 +6,26 @@ This is a Software for a server and for a Wio Terminal to become the ram and CPU
 ## Features from the Server:
 
 - Set the program from where you want to have the ram or CPU usage 
-   - per process id 
+   - per process ID 
    - to start a process
 - Set the port
-- Set the Adress to Bind
+- Set the Address to Bind
 - Works on Windows and Unix based Distributions
-- Connects over Wifi to the Wio Terminal
+- Connects over Wi-Fi to the Wio Terminal
 
 ## Features from my Wio Terminal Software:
 - Gui
 - Set a PIN up to 12 Numbers
-- Set the Wifi to connect
+- Set the Wi-Fi to connect
     - SSID
     - Password
 - Set the Server
     - Port
-    - Adress
--  Connects over Wifi to the Server
+    - Address
+-  Connects over Wi-Fi to the Server
 
 ## Installation and Usage
-Pleas read all: [Wiki](https://github.com/HKS-HNS/Arduino-Terminal/wiki) 
+Please read all: [Wiki](https://github.com/HKS-HNS/Arduino-Terminal/wiki) 
 
 ## for Java Developer:
 
